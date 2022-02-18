@@ -13,8 +13,8 @@ public class BruteForce{
             long startTime=System.nanoTime();
             BruteForce.bubbleSort(exampleArray);
             long endTime=System.nanoTime();
-            System.out.printf("sorted array using bubble sort = %s\n",Arrays.toString(exampleArray));
-            System.out.println("the runtime is "+(endTime-startTime)+"ns");
+            System.out.printf("sorted array using bubble sort = %s\n", Arrays.toString(exampleArray));
+            System.out.println("the runtime is "+ (endTime - startTime) + "ns");
             runTime = false;
         }
 
