@@ -1,5 +1,5 @@
 /*
-Author: Woody Lin
+    Author: Woody Lin
 
  */
 import java.util.Arrays;
@@ -10,8 +10,8 @@ public class BruteForce{
     public static void main(String[] args) {
         // sorted array using brute force search algorithm
         int[] exampleArray = {1,2,3,4,5,6,7,8,9,10};
+        // shuffle the example array
         BruteForce.shuffle(exampleArray);
-        System.out.printf("sorted array using bubble sort = %s\n", Arrays.toString(exampleArray));
         Boolean runTime = true;
 
         printOutBlank();
