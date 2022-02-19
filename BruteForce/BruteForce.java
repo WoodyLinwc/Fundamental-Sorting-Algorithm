@@ -97,7 +97,7 @@ public class BruteForce{
 
     // Insertion Sort
     public static void insertionSort(int array[]) {
-        // the array length is the same as the global variable "size"
+        // the array length is the same as the global variable "arraySize"
         for (int i = 0; i < arraySize - 1; i++) {
             int key = array[i];
             int j = i - 1;
