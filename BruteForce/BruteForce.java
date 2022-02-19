@@ -1,10 +1,17 @@
+/*
+Author: Woody Lin
+
+ */
 import java.util.Arrays;
+import java.lang.Math;
 
 public class BruteForce{
 
     public static void main(String[] args) {
         // sorted array using brute force search algorithm
-        int[] exampleArray = {5,4,3,2,1,7,9,10};
+        int[] exampleArray = {1,2,3,4,5,6,7,8,9,10};
+        BruteForce.shuffle(exampleArray);
+        System.out.printf("sorted array using bubble sort = %s\n", Arrays.toString(exampleArray));
         Boolean runTime = true;
 
         printOutBlank();
@@ -14,7 +21,7 @@ public class BruteForce{
             BruteForce.bubbleSort(exampleArray);
             long endTime=System.nanoTime();
             System.out.printf("sorted array using bubble sort = %s\n", Arrays.toString(exampleArray));
-            System.out.println("the runtime is "+ (endTime - startTime) + "ns");
+            System.out.println("the algorithm runtime is "+ (endTime - startTime) + "ns");
             runTime = false;
         }
 
@@ -39,17 +46,23 @@ public class BruteForce{
         }
     }
 
+    // function overload
     public static void swap(int[] array, int from, int to){
         int temp = array[from];
         array[from] = array[to];
         array[to] = temp;
     }
 
+
     public static void printOutBlank() {
         System.out.println("");
     }
 
-    // public static void shuffle(int[] array) {
-        
-    // }
+    public static void shuffle(int [] array) {
+        int n = array.length;
+        for (int i = 0; i < n; i++) {
+            int index = (int) (Math.random() * array.length);
+            swap(array, i, index);
+        }
+    }
 }
