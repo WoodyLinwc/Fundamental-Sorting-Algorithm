@@ -8,10 +8,14 @@ import java.util.Arrays;
 import java.lang.Math;
 
 public class BruteForce{
+    public static int size = 50; // the size of the array
 
     public static void main(String[] args) {
         // sorted array using brute force search algorithm
-        int[] exampleArray = {1,2,3,4,5,6,7,8,9,10};
+        int[] exampleArray = new int[size];
+        for (int i = 0; i < size; i++) {
+            exampleArray[i] = i;
+        }
         // shuffle the example array
         BruteForce.shuffle(exampleArray);
         Boolean runTime = true;
@@ -21,9 +25,9 @@ public class BruteForce{
         // calculate the runtime of the algorithm
         while(runTime){
             printOutBlank();
-            long startTime=System.nanoTime();
+            long startTime = System.nanoTime();
             BruteForce.bubbleSort(exampleArray);
-            long endTime=System.nanoTime();
+            long endTime = System.nanoTime();
             System.out.printf("sorted array using bubble sort = %s\n", Arrays.toString(exampleArray));
             System.out.println("the algorithm runtime is "+ (endTime - startTime) + "ns");
             runTime = false;
@@ -32,14 +36,13 @@ public class BruteForce{
         runTime = true;
         while(runTime){
             printOutBlank();
-            long startTime=System.nanoTime();
+            long startTime = System.nanoTime();
             BruteForce.optimizedBubbleSort(exampleArray);
-            long endTime=System.nanoTime();
+            long endTime = System.nanoTime();
             System.out.printf("sorted array using optimized bubble sort = %s\n", Arrays.toString(exampleArray));
             System.out.println("the algorithm runtime is "+ (endTime - startTime) + "ns");
             runTime = false;
         }
-
 
 
         printDashLine();
@@ -79,8 +82,9 @@ public class BruteForce{
                 break;
             }
         }
-        
     }
+
+    
 
     // function overload, not yet
     public static void swap(int[] array, int from, int to){
