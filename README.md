@@ -5,7 +5,7 @@ I want to make a single java file that contains fundamental sorting algorithms, 
 So far, I have the following sorting algorithms in the file
 1. bubble sort
 2. optimized bubble sort
-3. insertion sort
+3. insertion sort (not brute force)
 ---
 
 Other useful tools and information
