@@ -1,6 +1,6 @@
 /*
     Author: Woody Lin 林万程
-    The github page:https://github.com/WoodyLinwc/BruteForceSearchAlgorithm
+    The github page: https://github.com/WoodyLinwc/BruteForceSearchAlgorithm
     Feel free to reach out to me for any advice and concern regarding this file.
     Gmail: wancheng.lin1@gmail.com
  */
