@@ -5,6 +5,7 @@ I want to make a single java file that contains fundamental brute force search a
 So far, I have 
 1. bubble sort
 2. optimized bubble sort
+3. insertion sort
 ---
 
 Other useful tools
