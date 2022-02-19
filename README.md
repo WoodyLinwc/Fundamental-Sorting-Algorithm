@@ -8,5 +8,6 @@ So far, I have
 3. insertion sort
 ---
 
-Other useful tools
+Other useful tools and information
 - <a href="https://algorithm-visualizer.org/" target="_blank">Algorithm Visualizer</a>
+- <a href="https://www.geeksforgeeks.org/time-complexities-of-all-sorting-algorithms/" target="_blank">Time Complexities of all Sorting Algorithms</a>
