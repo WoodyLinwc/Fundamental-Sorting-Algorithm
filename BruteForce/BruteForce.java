@@ -44,6 +44,17 @@ public class BruteForce{
             runTime = false;
         }
 
+        runTime = true;
+        while(runTime){
+            printOutBlank();
+            long startTime = System.nanoTime();
+            BruteForce.insertionSort(exampleArray);
+            long endTime = System.nanoTime();
+            System.out.printf("sorted array using insertion sort = %s\n", Arrays.toString(exampleArray));
+            System.out.println("the algorithm runtime is "+ (endTime - startTime) + "ns");
+            runTime = false;
+        }
+
 
         printDashLine();
     }
@@ -84,6 +95,21 @@ public class BruteForce{
         }
     }
 
+    // Insertion Sort
+    public static void insertionSort(int array[]) {
+        // the array length is the same as the global variable "size"
+        for (int i = 0; i < size - 1; i++) {
+            int key = array[i];
+            int j = i - 1;
+
+            while (j >= 0 && array[j] > key) {
+                array[j + 1] = array[j];
+                j = j - 1;
+            }
+            array[j + 1] = key;
+        }
+    }
+
     
 
     // function overload, not yet
@@ -103,7 +129,7 @@ public class BruteForce{
     }
 
     public static void printOutBlank() {
-        System.out.println("");
+        System.out.println();
     }
 
     public static void printDashLine() {
