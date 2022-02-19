@@ -17,7 +17,6 @@ public class BruteForce{
         Boolean runTime = true;
 
         printDashLine();
-        printOutBlank();
         System.out.printf("the randomized array = %s\n", Arrays.toString(exampleArray));
         // calculate the runtime of the algorithm
         while(runTime){
@@ -43,7 +42,6 @@ public class BruteForce{
 
 
 
-        printOutBlank();
         printDashLine();
     }
 
@@ -104,8 +102,9 @@ public class BruteForce{
     }
 
     public static void printDashLine() {
-        for (int i = 0; i < 20; i++) {
-            System.out.println("-");
+        for (int i = 0; i < 60; i++) {
+            System.out.print("-");
         }
+        System.out.println();
     }
 }
