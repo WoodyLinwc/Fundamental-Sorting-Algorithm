@@ -74,14 +74,15 @@ public class BruteForce{
                     swapped = true;
                 }
             }
-            if(!swapped){
+            // if the array is already sorted, meaning no iteration is required, then exit the algorithm
+            if(!swapped){ // swapped == false
                 break;
             }
         }
         
     }
 
-    // function overload
+    // function overload, not yet
     public static void swap(int[] array, int from, int to){
         int temp = array[from];
         array[from] = array[to];
