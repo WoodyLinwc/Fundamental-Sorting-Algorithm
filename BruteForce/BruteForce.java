@@ -8,12 +8,12 @@ import java.util.Arrays;
 import java.lang.Math;
 
 public class BruteForce{
-    public static int size = 50; // the size of the array
+    public static int arraySize = 50; // the size of the array
 
     public static void main(String[] args) {
         // sorted array using brute force search algorithm
-        int[] exampleArray = new int[size];
-        for (int i = 0; i < size; i++) {
+        int[] exampleArray = new int[arraySize];
+        for (int i = 0; i < arraySize; i++) {
             exampleArray[i] = i;
         }
         // shuffle the example array
@@ -98,7 +98,7 @@ public class BruteForce{
     // Insertion Sort
     public static void insertionSort(int array[]) {
         // the array length is the same as the global variable "size"
-        for (int i = 0; i < size - 1; i++) {
+        for (int i = 0; i < arraySize - 1; i++) {
             int key = array[i];
             int j = i - 1;
 
@@ -123,7 +123,7 @@ public class BruteForce{
         int n = array.length;
 
         for (int i = 0; i < n; i++) {
-            int index = (int) (Math.random() * array.length);
+            int index = (int) (Math.random() * n);
             swap(array, i, index);
         }
     }
