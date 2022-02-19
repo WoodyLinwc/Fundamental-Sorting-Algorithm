@@ -1,6 +1,6 @@
 # Brute Force Sorting Algorithm
 
-I want to make a single java file that contains fundamental brute force sorting algorithms, so people can actually download it to the local machine and run it without any editing.
+I want to make a single java file that contains fundamental sorting algorithms, so people can actually download it to the local machine and run it without any editing.
 
 So far, I have the following sorting algorithms in the file
 1. bubble sort
