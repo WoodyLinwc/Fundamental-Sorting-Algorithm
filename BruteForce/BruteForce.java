@@ -16,9 +16,12 @@ public class BruteForce{
         BruteForce.shuffle(exampleArray);
         Boolean runTime = true;
 
+        printDashLine();
         printOutBlank();
+        System.out.printf("the randomized array = %s\n", Arrays.toString(exampleArray));
         // calculate the runtime of the algorithm
         while(runTime){
+            printOutBlank();
             long startTime=System.nanoTime();
             BruteForce.bubbleSort(exampleArray);
             long endTime=System.nanoTime();
@@ -27,9 +30,21 @@ public class BruteForce{
             runTime = false;
         }
 
+        runTime = true;
+        while(runTime){
+            printOutBlank();
+            long startTime=System.nanoTime();
+            BruteForce.optimizedBubbleSort(exampleArray);
+            long endTime=System.nanoTime();
+            System.out.printf("sorted array using optimized bubble sort = %s\n", Arrays.toString(exampleArray));
+            System.out.println("the algorithm runtime is "+ (endTime - startTime) + "ns");
+            runTime = false;
+        }
+
 
 
         printOutBlank();
+        printDashLine();
     }
 
     // Bubble Sort
@@ -48,6 +63,26 @@ public class BruteForce{
         }
     }
 
+    // Optimized Bubble Sort
+    public static void optimizedBubbleSort(int array[]) {
+        int n = array.length;
+
+        for (int i = 0; i < n - 1; i++) {
+            boolean swapped = false;
+
+            for (int j = 0; j < n - 1 - i; j++) {
+                if (array[j] > array[j+1]){
+                    swap(array, j, j+1);
+                    swapped = true;
+                }
+            }
+            if(!swapped){
+                break;
+            }
+        }
+        
+    }
+
     // function overload
     public static void swap(int[] array, int from, int to){
         int temp = array[from];
@@ -55,16 +90,22 @@ public class BruteForce{
         array[to] = temp;
     }
 
+    public static void shuffle(int [] array) {
+        int n = array.length;
+
+        for (int i = 0; i < n; i++) {
+            int index = (int) (Math.random() * array.length);
+            swap(array, i, index);
+        }
+    }
 
     public static void printOutBlank() {
         System.out.println("");
     }
 
-    public static void shuffle(int [] array) {
-        int n = array.length;
-        for (int i = 0; i < n; i++) {
-            int index = (int) (Math.random() * array.length);
-            swap(array, i, index);
+    public static void printDashLine() {
+        for (int i = 0; i < 20; i++) {
+            System.out.println("-");
         }
     }
 }
