@@ -8,7 +8,8 @@ import java.util.Arrays;
 import java.lang.Math;
 
 public class BruteForce{
-    public static int arraySize = 60; // the size of the array
+
+    public static int arraySize = 100; // the size of the array
 
     public static void main(String[] args) {
         // sorted array using brute force search algorithm
@@ -36,6 +37,7 @@ public class BruteForce{
         runTime = true;
         while(runTime){
             printOutBlank();
+            BruteForce.shuffle(exampleArray);
             long startTime = System.nanoTime();
             BruteForce.optimizedBubbleSort(exampleArray);
             long endTime = System.nanoTime();
@@ -47,6 +49,7 @@ public class BruteForce{
         runTime = true;
         while(runTime){
             printOutBlank();
+            BruteForce.shuffle(exampleArray);
             long startTime = System.nanoTime();
             BruteForce.heapSort(exampleArray);
             long endTime = System.nanoTime();
@@ -58,6 +61,7 @@ public class BruteForce{
         runTime = true;
         while(runTime){
             printOutBlank();
+            BruteForce.shuffle(exampleArray);
             long startTime = System.nanoTime();
             BruteForce.insertionSort(exampleArray);
             long endTime = System.nanoTime();
@@ -109,13 +113,11 @@ public class BruteForce{
     // Heap sort
     public static void heapSort(int array[]) {
         // the array length is the same as the global variable "arraySize"
-        int n = array.length;
-
-        for (int i = n / 2 - 1; i >= 0; i--) {
-            heapify(array, n, i);
+        for (int i = arraySize / 2 - 1; i >= 0; i--) {
+            heapify(array, arraySize, i);
         }
 
-        for (int i = n - 1; i > 0; i--) {
+        for (int i = arraySize - 1; i > 0; i--) {
             // move current root to end
             int temp = array[0];
             array[0] = array[i];
@@ -125,10 +127,10 @@ public class BruteForce{
             heapify(array, i, 0);
         }
     }
-    public static void heapify(int array[], int heapSize, int node) {
-        int largest = node;
-        int left = 2 * node + 1;
-        int right = 2 * node + 2;
+    public static void heapify(int array[], int heapSize, int root) {
+        int largest = root; // initialize the largest as root
+        int left = 2 * root + 1;
+        int right = 2 * root + 2;
 
         // if left child is larger than root
         if (left < heapSize && array[left] > array[largest])
@@ -139,10 +141,10 @@ public class BruteForce{
             largest = right;
  
         // if largest is not root
-        if (largest != node) {
-            int swap = array[node];
-            array[node] = array[largest];
-            array[largest] = swap;
+        if (largest != root) {
+            int temp = array[root];
+            array[root] = array[largest];
+            array[largest] = temp;
  
             // recursively heapify the affected sub-tree
             heapify(array, heapSize, largest);
@@ -152,7 +154,7 @@ public class BruteForce{
     // Insertion Sort
     public static void insertionSort(int array[]) {
         // the array length is the same as the global variable "arraySize"
-        for (int i = 0; i < arraySize - 1; i++) {
+        for (int i = 0; i < arraySize; i++) {
             int key = array[i];
             int j = i - 1;
 
