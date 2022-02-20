@@ -4,9 +4,14 @@
     Feel free to reach out to me for any advice and concern regarding this file.
     Gmail: wancheng.lin1@gmail.com
  */
-import java.util.Arrays;
 import java.lang.Math;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeMap;
+
 
 public class BruteForce{
 
@@ -15,6 +20,7 @@ public class BruteForce{
     public static void main(String[] args) {
         boolean runTime = true;
         boolean validInput = false;
+        TreeMap<Integer, String> tm = new TreeMap<Integer, String>();
 
         // check if user has entered a valid input
         Scanner scan = new Scanner(System.in);
@@ -25,13 +31,13 @@ public class BruteForce{
                 arraySize = scan.nextInt();
                 validInput = true;
             } catch (Exception e) {
+                printOutBlank();
                 System.out.println("Input must be an integer...Please try again.");
                 scan.reset();
                 scan.next();
             }
         } while(validInput == false); 
         scan.close();
-
 
 
         // sorted array using brute force search algorithm
@@ -50,8 +56,10 @@ public class BruteForce{
             long startTime = System.nanoTime();
             BruteForce.bubbleSort(exampleArray);
             long endTime = System.nanoTime();
+            int elapsedTime = (int)(endTime - startTime);
+            tm.put(elapsedTime, "Bubble Sort");
             System.out.printf("sorted array using bubble sort = %s\n", Arrays.toString(exampleArray));
-            System.out.println("the algorithm runtime is "+ (endTime - startTime) + "ns");
+            System.out.println("the algorithm runtime is "+ (elapsedTime) + "ns");
         }
 
         if(runTime){
@@ -60,8 +68,10 @@ public class BruteForce{
             long startTime = System.nanoTime();
             BruteForce.optimizedBubbleSort(exampleArray);
             long endTime = System.nanoTime();
+            int elapsedTime = (int)(endTime - startTime);
+            tm.put(elapsedTime, "Optimized Bubble Sort");
             System.out.printf("sorted array using optimized bubble sort = %s\n", Arrays.toString(exampleArray));
-            System.out.println("the algorithm runtime is "+ (endTime - startTime) + "ns");
+            System.out.println("the algorithm runtime is "+ (elapsedTime) + "ns");
         }
 
         if(runTime){
@@ -70,8 +80,10 @@ public class BruteForce{
             long startTime = System.nanoTime();
             BruteForce.heapSort(exampleArray);
             long endTime = System.nanoTime();
+            int elapsedTime = (int)(endTime - startTime);
+            tm.put(elapsedTime, "Heap Sort");
             System.out.printf("sorted array using heap sort = %s\n", Arrays.toString(exampleArray));
-            System.out.println("the algorithm runtime is "+ (endTime - startTime) + "ns");
+            System.out.println("the algorithm runtime is "+ (elapsedTime) + "ns");
         }
 
         if(runTime){
@@ -80,12 +92,24 @@ public class BruteForce{
             long startTime = System.nanoTime();
             BruteForce.insertionSort(exampleArray);
             long endTime = System.nanoTime();
+            int elapsedTime = (int)(endTime - startTime);
+            tm.put(elapsedTime, "Insertion Sort");
             System.out.printf("sorted array using insertion sort = %s\n", Arrays.toString(exampleArray));
-            System.out.println("the algorithm runtime is "+ (endTime - startTime) + "ns");
+            System.out.println("the algorithm runtime is "+ (elapsedTime) + "ns");
         }
 
-        
 
+        printOutBlank();
+        // arrange the algorithm runtime from most efficient to least efficient
+        Set set = tm.entrySet();
+        Iterator i = set.iterator();
+
+        System.out.println("the algorithm runtime in ascending order:");
+        while(i.hasNext()) {
+            Map.Entry me = (Map.Entry)i.next();
+            System.out.print(me.getValue() + " < ");
+          }        
+        printOutBlank();
         printDashLine();
     }
 
