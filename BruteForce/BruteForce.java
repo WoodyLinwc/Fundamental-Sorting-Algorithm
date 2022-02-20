@@ -6,12 +6,33 @@
  */
 import java.util.Arrays;
 import java.lang.Math;
+import java.util.Scanner;
 
 public class BruteForce{
 
-    public static int arraySize = 100; // the size of the array
+    public static int arraySize; // the size of the array
 
     public static void main(String[] args) {
+        boolean validInput = false;
+
+        // check if user has entered a valid input
+        Scanner scan = new Scanner(System.in);
+
+        do {
+            try {
+                System.out.print("Please specify the size of the array: ");
+                arraySize = scan.nextInt();
+                validInput = true;
+            } catch (Exception e) {
+                System.out.println("Input must be an integer...Please try again.");
+                scan.reset();
+                scan.next();
+            }
+        } while(!validInput); // validInput == false
+        scan.close();
+
+
+
         // sorted array using brute force search algorithm
         int[] exampleArray = new int[arraySize];
         for (int i = 0; i < arraySize; i++) {
