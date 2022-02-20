@@ -13,6 +13,7 @@ public class BruteForce{
     public static int arraySize; // the size of the array
 
     public static void main(String[] args) {
+        boolean runTime = true;
         boolean validInput = false;
 
         // check if user has entered a valid input
@@ -28,7 +29,7 @@ public class BruteForce{
                 scan.reset();
                 scan.next();
             }
-        } while(!validInput); // validInput == false
+        } while(validInput == false); 
         scan.close();
 
 
@@ -40,23 +41,20 @@ public class BruteForce{
         }
         // shuffle the example array
         BruteForce.shuffle(exampleArray);
-        Boolean runTime = true;
 
         printDashLine();
         System.out.printf("the randomized array = %s\n", Arrays.toString(exampleArray));
         // calculate the runtime of algorithms
-        while(runTime){
+        if(runTime){
             printOutBlank();
             long startTime = System.nanoTime();
             BruteForce.bubbleSort(exampleArray);
             long endTime = System.nanoTime();
             System.out.printf("sorted array using bubble sort = %s\n", Arrays.toString(exampleArray));
             System.out.println("the algorithm runtime is "+ (endTime - startTime) + "ns");
-            runTime = false;
         }
 
-        runTime = true;
-        while(runTime){
+        if(runTime){
             printOutBlank();
             BruteForce.shuffle(exampleArray);
             long startTime = System.nanoTime();
@@ -64,11 +62,9 @@ public class BruteForce{
             long endTime = System.nanoTime();
             System.out.printf("sorted array using optimized bubble sort = %s\n", Arrays.toString(exampleArray));
             System.out.println("the algorithm runtime is "+ (endTime - startTime) + "ns");
-            runTime = false;
         }
 
-        runTime = true;
-        while(runTime){
+        if(runTime){
             printOutBlank();
             BruteForce.shuffle(exampleArray);
             long startTime = System.nanoTime();
@@ -76,11 +72,9 @@ public class BruteForce{
             long endTime = System.nanoTime();
             System.out.printf("sorted array using heap sort = %s\n", Arrays.toString(exampleArray));
             System.out.println("the algorithm runtime is "+ (endTime - startTime) + "ns");
-            runTime = false;
         }
 
-        runTime = true;
-        while(runTime){
+        if(runTime){
             printOutBlank();
             BruteForce.shuffle(exampleArray);
             long startTime = System.nanoTime();
@@ -88,9 +82,9 @@ public class BruteForce{
             long endTime = System.nanoTime();
             System.out.printf("sorted array using insertion sort = %s\n", Arrays.toString(exampleArray));
             System.out.println("the algorithm runtime is "+ (endTime - startTime) + "ns");
-            runTime = false;
         }
 
+        
 
         printDashLine();
     }
