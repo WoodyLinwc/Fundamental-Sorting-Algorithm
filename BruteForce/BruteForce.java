@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.lang.Math;
 
 public class BruteForce{
-    public static int arraySize = 50; // the size of the array
+    public static int arraySize = 60; // the size of the array
 
     public static void main(String[] args) {
         // sorted array using brute force search algorithm
@@ -22,7 +22,7 @@ public class BruteForce{
 
         printDashLine();
         System.out.printf("the randomized array = %s\n", Arrays.toString(exampleArray));
-        // calculate the runtime of the algorithm
+        // calculate the runtime of algorithms
         while(runTime){
             printOutBlank();
             long startTime = System.nanoTime();
@@ -40,6 +40,17 @@ public class BruteForce{
             BruteForce.optimizedBubbleSort(exampleArray);
             long endTime = System.nanoTime();
             System.out.printf("sorted array using optimized bubble sort = %s\n", Arrays.toString(exampleArray));
+            System.out.println("the algorithm runtime is "+ (endTime - startTime) + "ns");
+            runTime = false;
+        }
+
+        runTime = true;
+        while(runTime){
+            printOutBlank();
+            long startTime = System.nanoTime();
+            BruteForce.heapSort(exampleArray);
+            long endTime = System.nanoTime();
+            System.out.printf("sorted array using heap sort = %s\n", Arrays.toString(exampleArray));
             System.out.println("the algorithm runtime is "+ (endTime - startTime) + "ns");
             runTime = false;
         }
@@ -92,6 +103,49 @@ public class BruteForce{
             if(!swapped){ // swapped == false
                 break;
             }
+        }
+    }
+
+    // Heap sort
+    public static void heapSort(int array[]) {
+        // the array length is the same as the global variable "arraySize"
+        int n = array.length;
+
+        for (int i = n / 2 - 1; i >= 0; i--) {
+            heapify(array, n, i);
+        }
+
+        for (int i = n - 1; i > 0; i--) {
+            // move current root to end
+            int temp = array[0];
+            array[0] = array[i];
+            array[i] = temp;
+ 
+            // call max heapify on the reduced heap
+            heapify(array, i, 0);
+        }
+    }
+    public static void heapify(int array[], int heapSize, int node) {
+        int largest = node;
+        int left = 2 * node + 1;
+        int right = 2 * node + 2;
+
+        // if left child is larger than root
+        if (left < heapSize && array[left] > array[largest])
+            largest = left;
+ 
+        // if right child is larger than largest so far
+        if (right < heapSize && array[right] > array[largest])
+            largest = right;
+ 
+        // if largest is not root
+        if (largest != node) {
+            int swap = array[node];
+            array[node] = array[largest];
+            array[largest] = swap;
+ 
+            // recursively heapify the affected sub-tree
+            heapify(array, heapSize, largest);
         }
     }
 
