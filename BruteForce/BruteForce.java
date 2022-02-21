@@ -110,6 +110,18 @@ public class BruteForce{
             System.out.println("the algorithm runtime is "+ (elapsedTime) + "ns");
         }
 
+        if(runTime){
+            printOutBlank();
+            BruteForce.shuffle(exampleArray);
+            long startTime = System.nanoTime();
+            BruteForce.quickSort(exampleArray, 0, arraySize - 1);
+            long endTime = System.nanoTime();
+            int elapsedTime = (int)(endTime - startTime);
+            tm.put(elapsedTime, "Quick Sort");
+            System.out.printf("sorted array using quick sort = %s\n", Arrays.toString(exampleArray));
+            System.out.println("the algorithm runtime is "+ (elapsedTime) + "ns");
+        }
+
         printOutBlank();
         // arrange the algorithm runtime from most efficient to least efficient
         @SuppressWarnings("rawtypes")
@@ -234,6 +246,36 @@ public class BruteForce{
                 array[j] = temp;
             }
         }
+    }
+
+    // Quick Sort
+    public static void quickSort(int[] array, int low, int high) {
+        if (low < high){
+            // pi is partitioning index, array[p] is now at right place
+            int pi = partition(array, low, high);
+ 
+            // Separately sort elements before partition and after partition
+            quickSort(array, low, pi - 1);
+            quickSort(array, pi + 1, high);
+        }
+    }
+    public static int partition(int[] array, int low, int high) {
+        int pivot = array[high];
+        // index of smaller element and indicates the right position of pivot found so far
+        int i = (low - 1);
+ 
+        for(int j = low; j <= high - 1; j++) {
+         
+            // if current element is smaller than the pivot
+            if (array[j] < pivot) {
+             
+            // increment index of smaller element
+            i++;
+            swap(array, i, j);
+            }
+        }
+        swap(array, i + 1, high);
+        return (i + 1);
     }
     
 

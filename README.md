@@ -1,4 +1,4 @@
-# Brute Force Sorting Algorithm
+# Brute Force and Divide Conquer Sorting Algorithm
 
 I want to make a single java file that contains fundamental sorting algorithms, so people can actually download it to the local machine and run it without any editing.
 
@@ -8,6 +8,7 @@ So far, I have the following sorting algorithms in the file
 3. heap sort 
 4. insertion sort 
 5. shell sort 
+6. quick sort
 
 ---
 
