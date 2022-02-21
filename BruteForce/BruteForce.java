@@ -101,11 +101,14 @@ public class BruteForce{
 
         printOutBlank();
         // arrange the algorithm runtime from most efficient to least efficient
+        @SuppressWarnings("rawtypes")
         Set set = tm.entrySet();
+        @SuppressWarnings("rawtypes")
         Iterator i = set.iterator();
 
         System.out.println("the algorithm runtime in ascending order:");
         while(i.hasNext()) {
+            @SuppressWarnings("rawtypes")
             Map.Entry me = (Map.Entry)i.next();
             System.out.print(me.getValue() + " < ");
           }        
