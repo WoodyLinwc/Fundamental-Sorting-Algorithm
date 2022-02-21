@@ -122,6 +122,18 @@ public class BruteForce{
             System.out.println("the algorithm runtime is "+ (elapsedTime) + "ns");
         }
 
+        if(runTime){
+            printOutBlank();
+            BruteForce.shuffle(exampleArray);
+            long startTime = System.nanoTime();
+            BruteForce.mergeSort(exampleArray, 0, arraySize - 1);
+            long endTime = System.nanoTime();
+            int elapsedTime = (int)(endTime - startTime);
+            tm.put(elapsedTime, "Merge Sort");
+            System.out.printf("sorted array using merge sort = %s\n", Arrays.toString(exampleArray));
+            System.out.println("the algorithm runtime is "+ (elapsedTime) + "ns");
+        }
+
         printOutBlank();
         // arrange the algorithm runtime from most efficient to least efficient
         @SuppressWarnings("rawtypes")
@@ -285,16 +297,16 @@ public class BruteForce{
     }
 
 
-    // Merge Sort, Reference: https://www.geeksforgeeks.org/merge-sort/
+    // Merge Sort, Reference: https://www.programiz.com/dsa/merge-sort
     public static void mergeSort(int array[], int l, int r)
     {
         if (l < r) {
             // Find the middle point
-            int mid = l + (r - l) / 2;
+            int mid = (l + r) / 2;
   
             // Sort first and second halves
-            mergeSort(array, l, r);
-            mergeSort(array, l, r);
+            mergeSort(array, l, mid);
+            mergeSort(array, mid + 1, r);
   
             // Merge the sorted halves
             merge(array, l, mid, r);
@@ -326,8 +338,7 @@ public class BruteForce{
             if (L[i] <= R[j]) {
                 arr[k] = L[i];
                 i++;
-            }
-            else {
+            } else {
                 arr[k] = R[j];
                 j++;
             }
