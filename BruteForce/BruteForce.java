@@ -98,6 +98,17 @@ public class BruteForce{
             System.out.println("the algorithm runtime is "+ (elapsedTime) + "ns");
         }
 
+        if(runTime){
+            printOutBlank();
+            BruteForce.shuffle(exampleArray);
+            long startTime = System.nanoTime();
+            BruteForce.shellSort(exampleArray, arraySize);
+            long endTime = System.nanoTime();
+            int elapsedTime = (int)(endTime - startTime);
+            tm.put(elapsedTime, "Shell Sort");
+            System.out.printf("sorted array using shell sort = %s\n", Arrays.toString(exampleArray));
+            System.out.println("the algorithm runtime is "+ (elapsedTime) + "ns");
+        }
 
         printOutBlank();
         // arrange the algorithm runtime from most efficient to least efficient
@@ -208,6 +219,22 @@ public class BruteForce{
         }
     }
 
+    // Shell Sort
+    public static void shellSort(int array[], int size) {
+        // int n is the size of the array
+        // start with a big interval, then reduce the interval
+        for (int interval = size / 2; interval > 0; interval /= 2) {
+            for (int i = interval; i < size; i += 1) {
+                int temp = array[i];
+                int j;
+                
+                for (j = i; j >= interval && array[j - interval] > temp; j -= interval) {
+                    array[j] = array[j - interval];
+                }
+                array[j] = temp;
+            }
+        }
+    }
     
 
     // function overload, not yet
