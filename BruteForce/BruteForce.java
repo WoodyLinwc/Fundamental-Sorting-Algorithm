@@ -221,7 +221,7 @@ public class BruteForce{
 
     // Shell Sort
     public static void shellSort(int array[], int size) {
-        // int n is the size of the array
+        // int size is the array size
         // start with a big interval, then reduce the interval
         for (int interval = size / 2; interval > 0; interval /= 2) {
             for (int i = interval; i < size; i += 1) {
