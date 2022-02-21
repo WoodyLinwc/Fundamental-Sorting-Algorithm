@@ -9,6 +9,7 @@ So far, I have the following sorting algorithms in the file
 4. insertion sort 
 5. shell sort 
 6. quick sort
+7. merge sort
 
 ---
 
