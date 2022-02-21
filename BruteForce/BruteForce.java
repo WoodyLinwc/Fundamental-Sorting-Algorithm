@@ -139,14 +139,20 @@ public class BruteForce{
         printDashLine();
     }
 
-    // Bubble Sort
+    /*
+    -------------------------------------------------
+    Code Implementation of Various Sorting Algorithms
+    -------------------------------------------------
+    */
+
+    // Bubble Sort, Reference: https://www.programiz.com/dsa/bubble-sort
     public static void bubbleSort(int array[]) {
         int n = array.length;
 
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - 1 - i; j++) {
-                if (array[j] > array[j+1]){
-                    swap(array, j, j+1);
+                if (array[j] > array[j + 1]){
+                    swap(array, j, j + 1);
                     // int temp = array[j];
                     // array[j] = array[j+1];
                     // array[j+1] = temp;
@@ -155,7 +161,7 @@ public class BruteForce{
         }
     }
 
-    // Optimized Bubble Sort
+    // Optimized Bubble Sort, Reference: https://www.programiz.com/dsa/bubble-sort
     public static void optimizedBubbleSort(int array[]) {
         int n = array.length;
 
@@ -163,8 +169,8 @@ public class BruteForce{
             boolean swapped = false;
 
             for (int j = 0; j < n - 1 - i; j++) {
-                if (array[j] > array[j+1]){
-                    swap(array, j, j+1);
+                if (array[j] > array[j + 1]){
+                    swap(array, j, j + 1);
                     swapped = true;
                 }
             }
@@ -175,7 +181,7 @@ public class BruteForce{
         }
     }
 
-    // Heap sort
+    // Heap sort, Reference: https://www.geeksforgeeks.org/heap-sort/
     public static void heapSort(int array[]) {
         // the array length is the same as the global variable "arraySize"
         for (int i = arraySize / 2 - 1; i >= 0; i--) {
@@ -216,7 +222,7 @@ public class BruteForce{
         }
     }
 
-    // Insertion Sort
+    // Insertion Sort, Reference: https://www.geeksforgeeks.org/insertion-sort/
     public static void insertionSort(int array[]) {
         // the array length is the same as the global variable "arraySize"
         for (int i = 0; i < arraySize; i++) {
@@ -231,7 +237,7 @@ public class BruteForce{
         }
     }
 
-    // Shell Sort
+    // Shell Sort, Reference: https://www.programiz.com/dsa/shell-sort
     public static void shellSort(int array[], int size) {
         // int size is the array size
         // start with a big interval, then reduce the interval
@@ -248,7 +254,7 @@ public class BruteForce{
         }
     }
 
-    // Quick Sort
+    // Quick Sort, Reference: https://www.geeksforgeeks.org/quick-sort/
     public static void quickSort(int[] array, int low, int high) {
         if (low < high){
             // pi is partitioning index, array[p] is now at right place
@@ -276,6 +282,71 @@ public class BruteForce{
         }
         swap(array, i + 1, high);
         return (i + 1);
+    }
+
+
+    // Merge Sort, Reference: https://www.geeksforgeeks.org/merge-sort/
+    public static void mergeSort(int array[], int l, int r)
+    {
+        if (l < r) {
+            // Find the middle point
+            int mid = l + (r - l) / 2;
+  
+            // Sort first and second halves
+            mergeSort(array, l, r);
+            mergeSort(array, l, r);
+  
+            // Merge the sorted halves
+            merge(array, l, mid, r);
+        }
+    }
+    public static void merge(int arr[], int l, int mid, int r) {
+        // find sizes of two sub-arrays to be merged
+        int n1 = mid - l + 1;
+        int n2 = r - mid;
+  
+        // create temp arrays
+        int L[] = new int[n1];
+        int R[] = new int[n2];
+  
+        // copy data to temp arrays
+        for (int i = 0; i < n1; ++i)
+            L[i] = arr[l + i];
+        for (int j = 0; j < n2; ++j)
+            R[j] = arr[mid + 1 + j];
+  
+        /* Merge the temp arrays */
+  
+        // initial indexes of first and second sub-arrays
+        int i = 0, j = 0;
+  
+        // initial index of merged sub-array array
+        int k = l;
+        while (i < n1 && j < n2) {
+            if (L[i] <= R[j]) {
+                arr[k] = L[i];
+                i++;
+            }
+            else {
+                arr[k] = R[j];
+                j++;
+            }
+            k++;
+        }
+  
+        // copy remaining elements of L[] if any
+        while (i < n1) {
+            arr[k] = L[i];
+            i++;
+            k++;
+        }
+  
+        // copy remaining elements of R[] if any
+        while (j < n2) {
+            arr[k] = R[j];
+            j++;
+            k++;
+        }
     }
     
 
