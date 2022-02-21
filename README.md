@@ -13,6 +13,7 @@ So far, I have the following sorting algorithms in the file
 - User can specify the array size, then the program will generate randomized array to test the runtime of algorithm.
 
 - The program arranges the algorithm runtime from most efficient to least efficient in the command line output.
+
 ![runtime](/images/runtime.png)
 
 ---
