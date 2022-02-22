@@ -21,6 +21,6 @@ So far, I have the following sorting algorithms in the file
 
 ---
 
-Other useful tools and resources
+Reference tools and resources
 - <a href="https://algorithm-visualizer.org/" target="_blank">Algorithm Visualizer</a>
 - <a href="https://www.geeksforgeeks.org/time-complexities-of-all-sorting-algorithms/" target="_blank">Time Complexities of all Sorting Algorithms</a>
