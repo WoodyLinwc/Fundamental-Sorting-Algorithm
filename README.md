@@ -24,3 +24,4 @@ So far, I have the following sorting algorithms in the file
 Reference tools and resources
 - <a href="https://algorithm-visualizer.org/" target="_blank">Algorithm Visualizer</a>
 - <a href="https://www.geeksforgeeks.org/time-complexities-of-all-sorting-algorithms/" target="_blank">Time Complexities of all Sorting Algorithms</a>
+- <a href="https://dev.to/christinamcmahon/common-sorting-algorithms-in-javascript-58a7" target="_blank">Common Sorting Algorithms</a>
