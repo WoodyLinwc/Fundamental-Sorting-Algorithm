@@ -359,6 +359,16 @@ public class BruteForce{
             k++;
         }
     }
+
+    // Bucket Sort
+    public static void bucketSort() {
+        
+    }
+
+    // Radix Sort
+    public static void radixSort() {
+        
+    }
     
 
     // function overload, not yet
