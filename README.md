@@ -21,7 +21,8 @@ So far, I have the following sorting algorithms in the file
 
 ---
 
-Bubble Sort
+- Bubble Sort
+
 ![bubble sort](https://res.cloudinary.com/practicaldev/image/fetch/s--C0CI1OCj--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_66%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/ubhywp9xh8zk6on4caql.gif)
 
 ---
