@@ -21,6 +21,10 @@ So far, I have the following sorting algorithms in the file
 
 ---
 
+Time Complexity
+
+---
+
 Algorithm Visualization
 
 - Bubble Sort
