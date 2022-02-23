@@ -77,6 +77,18 @@ public class BruteForce{
             printOutBlank();
             BruteForce.shuffle(exampleArray);
             long startTime = System.nanoTime();
+            BruteForce.insertionSort(exampleArray);
+            long endTime = System.nanoTime();
+            int elapsedTime = (int)(endTime - startTime);
+            tm.put(elapsedTime, "Insertion Sort");
+            System.out.printf("sorted array using insertion sort = %s\n", Arrays.toString(exampleArray));
+            System.out.println("the algorithm runtime is "+ (elapsedTime) + "ns");
+        }
+
+        if(runTime){
+            printOutBlank();
+            BruteForce.shuffle(exampleArray);
+            long startTime = System.nanoTime();
             BruteForce.heapSort(exampleArray);
             long endTime = System.nanoTime();
             int elapsedTime = (int)(endTime - startTime);
@@ -89,11 +101,11 @@ public class BruteForce{
             printOutBlank();
             BruteForce.shuffle(exampleArray);
             long startTime = System.nanoTime();
-            BruteForce.insertionSort(exampleArray);
+            BruteForce.selectionSort(exampleArray);
             long endTime = System.nanoTime();
             int elapsedTime = (int)(endTime - startTime);
-            tm.put(elapsedTime, "Insertion Sort");
-            System.out.printf("sorted array using insertion sort = %s\n", Arrays.toString(exampleArray));
+            tm.put(elapsedTime, "Selection Sort");
+            System.out.printf("sorted array using selection sort = %s\n", Arrays.toString(exampleArray));
             System.out.println("the algorithm runtime is "+ (elapsedTime) + "ns");
         }
 
@@ -113,11 +125,11 @@ public class BruteForce{
             printOutBlank();
             BruteForce.shuffle(exampleArray);
             long startTime = System.nanoTime();
-            BruteForce.quickSort(exampleArray, 0, arraySize - 1);
+            BruteForce.mergeSort(exampleArray, 0, arraySize - 1);
             long endTime = System.nanoTime();
             int elapsedTime = (int)(endTime - startTime);
-            tm.put(elapsedTime, "Quick Sort");
-            System.out.printf("sorted array using quick sort = %s\n", Arrays.toString(exampleArray));
+            tm.put(elapsedTime, "Merge Sort");
+            System.out.printf("sorted array using merge sort = %s\n", Arrays.toString(exampleArray));
             System.out.println("the algorithm runtime is "+ (elapsedTime) + "ns");
         }
 
@@ -125,11 +137,11 @@ public class BruteForce{
             printOutBlank();
             BruteForce.shuffle(exampleArray);
             long startTime = System.nanoTime();
-            BruteForce.mergeSort(exampleArray, 0, arraySize - 1);
+            BruteForce.quickSort(exampleArray, 0, arraySize - 1);
             long endTime = System.nanoTime();
             int elapsedTime = (int)(endTime - startTime);
-            tm.put(elapsedTime, "Merge Sort");
-            System.out.printf("sorted array using merge sort = %s\n", Arrays.toString(exampleArray));
+            tm.put(elapsedTime, "Quick Sort");
+            System.out.printf("sorted array using quick sort = %s\n", Arrays.toString(exampleArray));
             System.out.println("the algorithm runtime is "+ (elapsedTime) + "ns");
         }
 
@@ -145,18 +157,7 @@ public class BruteForce{
             System.out.println("the algorithm runtime is "+ (elapsedTime) + "ns");
         }
 
-        if(runTime){
-            printOutBlank();
-            BruteForce.shuffle(exampleArray);
-            long startTime = System.nanoTime();
-            BruteForce.selectionSort(exampleArray);
-            long endTime = System.nanoTime();
-            int elapsedTime = (int)(endTime - startTime);
-            tm.put(elapsedTime, "Selection Sort");
-            System.out.printf("sorted array using selection sort = %s\n", Arrays.toString(exampleArray));
-            System.out.println("the algorithm runtime is "+ (elapsedTime) + "ns");
-        }
-
+        
         printOutBlank();
         // arrange the algorithm runtime from most efficient to least efficient
         @SuppressWarnings("rawtypes")
@@ -217,6 +218,62 @@ public class BruteForce{
         }
     }
 
+    // Insertion Sort, Reference: https://www.geeksforgeeks.org/insertion-sort/
+    public static void insertionSort(int[] array) {
+        // the array length is the same as the global variable "arraySize"
+        for (int i = 0; i < arraySize; i++) {
+            int key = array[i];
+            int j = i - 1;
+
+            while (j >= 0 && array[j] > key) {
+                array[j + 1] = array[j];
+                j = j - 1;
+            }
+            array[j + 1] = key;
+        }
+    }    
+
+    // Selection Sort, Reference: https://www.programiz.com/dsa/selection-sort
+    public static void selectionSort(int[] array) {
+
+        for (int step = 0; step < arraySize - 1; step++) {
+          int min_idx = step;
+    
+          for (int i = step + 1; i < arraySize; i++) {
+    
+            // to sort in descending order, change > to < in this line.
+            // select the minimum element in each loop.
+            if (array[i] < array[min_idx]) {
+              min_idx = i;
+            }
+          }
+    
+        // put min at the correct position, 
+        // swap function is not working here
+        // swap(array, array[step], array[min_idx]);
+        int temp = array[step];
+        array[step] = array[min_idx];
+        array[min_idx] = temp;
+        }
+    }
+
+    // Shell Sort, Reference: https://www.programiz.com/dsa/shell-sort
+    public static void shellSort(int[] array, int size) {
+        // int size is the array size
+        // start with a big interval, then reduce the interval
+        for (int interval = size / 2; interval > 0; interval /= 2) {
+            for (int i = interval; i < size; i += 1) {
+                int temp = array[i];
+                int j;
+                
+                for (j = i; j >= interval && array[j - interval] > temp; j -= interval) {
+                    array[j] = array[j - interval];
+                }
+                array[j] = temp;
+            }
+        }
+    }
+
     // Heap sort, Reference: https://www.geeksforgeeks.org/heap-sort/
     public static void heapSort(int[] array) {
         // the array length is the same as the global variable "arraySize"
@@ -257,69 +314,6 @@ public class BruteForce{
             heapify(array, heapSize, largest);
         }
     }
-
-    // Insertion Sort, Reference: https://www.geeksforgeeks.org/insertion-sort/
-    public static void insertionSort(int[] array) {
-        // the array length is the same as the global variable "arraySize"
-        for (int i = 0; i < arraySize; i++) {
-            int key = array[i];
-            int j = i - 1;
-
-            while (j >= 0 && array[j] > key) {
-                array[j + 1] = array[j];
-                j = j - 1;
-            }
-            array[j + 1] = key;
-        }
-    }
-
-    // Shell Sort, Reference: https://www.programiz.com/dsa/shell-sort
-    public static void shellSort(int[] array, int size) {
-        // int size is the array size
-        // start with a big interval, then reduce the interval
-        for (int interval = size / 2; interval > 0; interval /= 2) {
-            for (int i = interval; i < size; i += 1) {
-                int temp = array[i];
-                int j;
-                
-                for (j = i; j >= interval && array[j - interval] > temp; j -= interval) {
-                    array[j] = array[j - interval];
-                }
-                array[j] = temp;
-            }
-        }
-    }
-
-    // Quick Sort, Reference: https://www.geeksforgeeks.org/quick-sort/
-    public static void quickSort(int[] array, int low, int high) {
-        if (low < high){
-            // pi is partitioning index, array[p] is now at right place
-            int pi = partition(array, low, high);
- 
-            // Separately sort elements before partition and after partition
-            quickSort(array, low, pi - 1);
-            quickSort(array, pi + 1, high);
-        }
-    }
-    public static int partition(int[] array, int low, int high) {
-        int pivot = array[high];
-        // index of smaller element and indicates the right position of pivot found so far
-        int i = (low - 1);
- 
-        for(int j = low; j <= high - 1; j++) {
-         
-            // if current element is smaller than the pivot
-            if (array[j] < pivot) {
-             
-            // increment index of smaller element
-            i++;
-            swap(array, i, j);
-            }
-        }
-        swap(array, i + 1, high);
-        return (i + 1);
-    }
-
 
     // Merge Sort, Reference: https://www.programiz.com/dsa/merge-sort
     public static void mergeSort(int[] array, int l, int r){
@@ -383,6 +377,36 @@ public class BruteForce{
         }
     }
 
+    // Quick Sort, Reference: https://www.geeksforgeeks.org/quick-sort/
+    public static void quickSort(int[] array, int low, int high) {
+        if (low < high){
+            // pi is partitioning index, array[p] is now at right place
+            int pi = partition(array, low, high);
+ 
+            // Separately sort elements before partition and after partition
+            quickSort(array, low, pi - 1);
+            quickSort(array, pi + 1, high);
+        }
+    }
+    public static int partition(int[] array, int low, int high) {
+        int pivot = array[high];
+        // index of smaller element and indicates the right position of pivot found so far
+        int i = (low - 1);
+ 
+        for(int j = low; j <= high - 1; j++) {
+         
+            // if current element is smaller than the pivot
+            if (array[j] < pivot) {
+             
+            // increment index of smaller element
+            i++;
+            swap(array, i, j);
+            }
+        }
+        swap(array, i + 1, high);
+        return (i + 1);
+    }
+
     // Counting Sort, Reference: https://www.programiz.com/dsa/counting-sort
     public static void countingSort(int[] array, int size) {
         int[] output = new int[size + 1];
@@ -421,36 +445,6 @@ public class BruteForce{
         for (int i = 0; i < size; i++) {
           array[i] = output[i];
         }
-    }
-
-    // Selection Sort, Reference: https://www.programiz.com/dsa/selection-sort
-    public static void selectionSort(int[] array) {
-
-        for (int step = 0; step < arraySize - 1; step++) {
-          int min_idx = step;
-    
-          for (int i = step + 1; i < arraySize; i++) {
-    
-            // to sort in descending order, change > to < in this line.
-            // select the minimum element in each loop.
-            if (array[i] < array[min_idx]) {
-              min_idx = i;
-            }
-          }
-    
-        // put min at the correct position, 
-        // swap function is not working here
-        //swap(array, array[step], array[min_idx]);
-        int temp = array[step];
-        array[step] = array[min_idx];
-        array[min_idx] = temp;
-        }
-    }
-
-
-    // Radix Sort
-    public static void radixSort() {
-        
     }
     
     /*
