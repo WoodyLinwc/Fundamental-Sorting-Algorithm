@@ -10,6 +10,7 @@ So far, I have the following sorting algorithms in the file
 5. shell sort 
 6. quick sort
 7. merge sort
+8. bucket sort
 
 ---
 
