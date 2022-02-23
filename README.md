@@ -27,6 +27,14 @@ Algorithm Visualization
 
 ![bubble sort](https://res.cloudinary.com/practicaldev/image/fetch/s--C0CI1OCj--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_66%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/ubhywp9xh8zk6on4caql.gif)
 
+- Insertion Sort
+
+![insertion sort](https://res.cloudinary.com/practicaldev/image/fetch/s---bIcRugF--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_66%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/osft7ojymgp8jroekxxu.gif)
+
+- Quick Sort
+
+![quick sort](https://res.cloudinary.com/practicaldev/image/fetch/s--5nmg3LKx--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_66%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/vo2ltivrpucxtoamvdeb.gif)
+
 ---
 
 Reference tools and resources
