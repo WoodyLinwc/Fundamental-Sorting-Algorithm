@@ -11,9 +11,6 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeMap;
-import java.util.ArrayList;
-import java.util.Collections;
-
 
 public class BruteForce{
 
@@ -140,11 +137,23 @@ public class BruteForce{
             printOutBlank();
             BruteForce.shuffle(exampleArray);
             long startTime = System.nanoTime();
-            BruteForce.mergeSort(exampleArray, 0, arraySize - 1);
+            BruteForce.countingSort(exampleArray, arraySize);
             long endTime = System.nanoTime();
             int elapsedTime = (int)(endTime - startTime);
-            tm.put(elapsedTime, "Bucket Sort");
-            System.out.printf("sorted array using bucket sort = %s\n", Arrays.toString(exampleArray));
+            tm.put(elapsedTime, "Counting Sort");
+            System.out.printf("sorted array using counting sort = %s\n", Arrays.toString(exampleArray));
+            System.out.println("the algorithm runtime is "+ (elapsedTime) + "ns");
+        }
+
+        if(runTime){
+            printOutBlank();
+            BruteForce.shuffle(exampleArray);
+            long startTime = System.nanoTime();
+            BruteForce.selectionSort(exampleArray);
+            long endTime = System.nanoTime();
+            int elapsedTime = (int)(endTime - startTime);
+            tm.put(elapsedTime, "Selection Sort");
+            System.out.printf("sorted array using selection sort = %s\n", Arrays.toString(exampleArray));
             System.out.println("the algorithm runtime is "+ (elapsedTime) + "ns");
         }
 
@@ -200,7 +209,8 @@ public class BruteForce{
                     swapped = true;
                 }
             }
-            // if the array is already sorted, meaning no iteration is required, then exit the algorithm
+            // if the array is already sorted, meaning no iteration is required, 
+            // then exit the algorithm
             if(!swapped){ // swapped == false
                 break;
             }
@@ -373,37 +383,68 @@ public class BruteForce{
         }
     }
 
-    // Bucket Sort, Reference: 
-    // need to import ArrayList and Collection
-    public void bucketSort(int[] array, int n) {
-        if (n <= 0)
-          return;
-        @SuppressWarnings("unchecked")
-        ArrayList<Integer>[] bucket = new ArrayList[n];
+    // Counting Sort, Reference: https://www.programiz.com/dsa/counting-sort
+    public static void countingSort(int array[], int size) {
+        int[] output = new int[size + 1];
     
-        // create empty buckets
-        for (int i = 0; i < n; i++)
-          bucket[i] = new ArrayList<Integer>();
+        // find the largest element of the array
+        int max = array[0];
+        for (int i = 1; i < size; i++) {
+          if (array[i] > max)
+            max = array[i];
+        }
+        int[] count = new int[max + 1];
     
-        // add elements into the buckets
-        for (int i = 0; i < n; i++) {
-          int bucketIndex = array[i] * n;
-          bucket[bucketIndex].add(array[i]);
+        // initialize count array with all zeros.
+        for (int i = 0; i < max; ++i) {
+          count[i] = 0;
         }
     
-        // sort the elements of each bucket
-        for (int i = 0; i < n; i++) {
-          Collections.sort((bucket[i]));
+        // store the count of each element
+        for (int i = 0; i < size; i++) {
+          count[array[i]]++;
         }
     
-        // get the sorted array
-        int index = 0;
-        for (int i = 0; i < n; i++) {
-          for (int j = 0, size = bucket[i].size(); j < size; j++) {
-            array[index++] = bucket[i].get(j);
-          }
+        // store the cumulative count of each array
+        for (int i = 1; i <= max; i++) {
+          count[i] += count[i - 1];
+        }
+    
+        // find the index of each element of the original array in count array, and
+        // place the elements in output array
+        for (int i = size - 1; i >= 0; i--) {
+          output[count[array[i]] - 1] = array[i];
+          count[array[i]]--;
+        }
+    
+        // copy the sorted elements into original array
+        for (int i = 0; i < size; i++) {
+          array[i] = output[i];
         }
     }
+
+    // Selection Sort, Reference: https://www.programiz.com/dsa/selection-sort
+    public static void selectionSort(int array[]) {
+
+        for (int step = 0; step < arraySize - 1; step++) {
+          int min_idx = step;
+    
+          for (int i = step + 1; i < arraySize; i++) {
+    
+            // to sort in descending order, change > to < in this line.
+            // select the minimum element in each loop.
+            if (array[i] < array[min_idx]) {
+              min_idx = i;
+            }
+          }
+    
+        // put min at the correct position
+        int temp = array[step];
+        array[step] = array[min_idx];
+        array[min_idx] = temp;
+        }
+    }
+
 
     // Radix Sort
     public static void radixSort() {
