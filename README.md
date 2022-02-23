@@ -19,7 +19,7 @@ So far, I have the following sorting algorithms in the file
 
 - The program arranges the algorithm runtime from most efficient to least efficient in the command line output.
 
-![runtime](/images/runtime.png)
+![runtime](/images/runtimes.png)
 
 ---
 
