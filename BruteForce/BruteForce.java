@@ -136,6 +136,18 @@ public class BruteForce{
             System.out.println("the algorithm runtime is "+ (elapsedTime) + "ns");
         }
 
+        if(runTime){
+            printOutBlank();
+            BruteForce.shuffle(exampleArray);
+            long startTime = System.nanoTime();
+            BruteForce.mergeSort(exampleArray, 0, arraySize - 1);
+            long endTime = System.nanoTime();
+            int elapsedTime = (int)(endTime - startTime);
+            tm.put(elapsedTime, "Bucket Sort");
+            System.out.printf("sorted array using bucket sort = %s\n", Arrays.toString(exampleArray));
+            System.out.println("the algorithm runtime is "+ (elapsedTime) + "ns");
+        }
+
         printOutBlank();
         // arrange the algorithm runtime from most efficient to least efficient
         @SuppressWarnings("rawtypes")
@@ -375,7 +387,7 @@ public class BruteForce{
     
         // add elements into the buckets
         for (int i = 0; i < n; i++) {
-          int bucketIndex = (int) array[i] * n;
+          int bucketIndex = array[i] * n;
           bucket[bucketIndex].add(array[i]);
         }
     
@@ -398,6 +410,11 @@ public class BruteForce{
         
     }
     
+    /*
+    -------------------------------------------------
+    Code Implementation of Helper function in the File
+    -------------------------------------------------
+    */
 
     // function overload, not yet
     public static void swap(int[] array, int from, int to){
