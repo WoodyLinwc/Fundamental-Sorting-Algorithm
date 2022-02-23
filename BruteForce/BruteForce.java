@@ -11,6 +11,8 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class BruteForce{
@@ -298,8 +300,7 @@ public class BruteForce{
 
 
     // Merge Sort, Reference: https://www.programiz.com/dsa/merge-sort
-    public static void mergeSort(int array[], int l, int r)
-    {
+    public static void mergeSort(int array[], int l, int r){
         if (l < r) {
             // Find the middle point
             int mid = (l + r) / 2;
@@ -360,9 +361,36 @@ public class BruteForce{
         }
     }
 
-    // Bucket Sort
-    public static void bucketSort() {
-        
+    // Bucket Sort, Reference: 
+    // need to import ArrayList and Collection
+    public void bucketSort(int[] array, int n) {
+        if (n <= 0)
+          return;
+        @SuppressWarnings("unchecked")
+        ArrayList<Integer>[] bucket = new ArrayList[n];
+    
+        // create empty buckets
+        for (int i = 0; i < n; i++)
+          bucket[i] = new ArrayList<Integer>();
+    
+        // add elements into the buckets
+        for (int i = 0; i < n; i++) {
+          int bucketIndex = (int) array[i] * n;
+          bucket[bucketIndex].add(array[i]);
+        }
+    
+        // sort the elements of each bucket
+        for (int i = 0; i < n; i++) {
+          Collections.sort((bucket[i]));
+        }
+    
+        // get the sorted array
+        int index = 0;
+        for (int i = 0; i < n; i++) {
+          for (int j = 0, size = bucket[i].size(); j < size; j++) {
+            array[index++] = bucket[i].get(j);
+          }
+        }
     }
 
     // Radix Sort
