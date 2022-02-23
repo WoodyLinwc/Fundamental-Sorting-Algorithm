@@ -440,7 +440,7 @@ public class BruteForce{
     
         // put min at the correct position, 
         // swap function is not working here
-        // swap(array, array[step], array[min_idx]);
+        //swap(array, array[step], array[min_idx]);
         int temp = array[step];
         array[step] = array[min_idx];
         array[min_idx] = temp;
