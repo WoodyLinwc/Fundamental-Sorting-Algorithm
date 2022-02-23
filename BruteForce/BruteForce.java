@@ -181,7 +181,7 @@ public class BruteForce{
     */
 
     // Bubble Sort, Reference: https://www.programiz.com/dsa/bubble-sort
-    public static void bubbleSort(int array[]) {
+    public static void bubbleSort(int[] array) {
         int n = array.length;
 
         for (int i = 0; i < n - 1; i++) {
@@ -197,7 +197,7 @@ public class BruteForce{
     }
 
     // Optimized Bubble Sort, Reference: https://www.programiz.com/dsa/bubble-sort
-    public static void optimizedBubbleSort(int array[]) {
+    public static void optimizedBubbleSort(int[] array) {
         int n = array.length;
 
         for (int i = 0; i < n - 1; i++) {
@@ -218,7 +218,7 @@ public class BruteForce{
     }
 
     // Heap sort, Reference: https://www.geeksforgeeks.org/heap-sort/
-    public static void heapSort(int array[]) {
+    public static void heapSort(int[] array) {
         // the array length is the same as the global variable "arraySize"
         for (int i = arraySize / 2 - 1; i >= 0; i--) {
             heapify(array, arraySize, i);
@@ -234,7 +234,7 @@ public class BruteForce{
             heapify(array, i, 0);
         }
     }
-    public static void heapify(int array[], int heapSize, int root) {
+    public static void heapify(int[] array, int heapSize, int root) {
         int largest = root; // initialize the largest as root
         int left = 2 * root + 1;
         int right = 2 * root + 2;
@@ -259,7 +259,7 @@ public class BruteForce{
     }
 
     // Insertion Sort, Reference: https://www.geeksforgeeks.org/insertion-sort/
-    public static void insertionSort(int array[]) {
+    public static void insertionSort(int[] array) {
         // the array length is the same as the global variable "arraySize"
         for (int i = 0; i < arraySize; i++) {
             int key = array[i];
@@ -274,7 +274,7 @@ public class BruteForce{
     }
 
     // Shell Sort, Reference: https://www.programiz.com/dsa/shell-sort
-    public static void shellSort(int array[], int size) {
+    public static void shellSort(int[] array, int size) {
         // int size is the array size
         // start with a big interval, then reduce the interval
         for (int interval = size / 2; interval > 0; interval /= 2) {
@@ -322,7 +322,7 @@ public class BruteForce{
 
 
     // Merge Sort, Reference: https://www.programiz.com/dsa/merge-sort
-    public static void mergeSort(int array[], int l, int r){
+    public static void mergeSort(int[] array, int l, int r){
         if (l < r) {
             // Find the middle point
             int mid = (l + r) / 2;
@@ -335,7 +335,7 @@ public class BruteForce{
             merge(array, l, mid, r);
         }
     }
-    public static void merge(int arr[], int l, int mid, int r) {
+    public static void merge(int[] array, int l, int mid, int r) {
         // find sizes of two sub-arrays to be merged
         int n1 = mid - l + 1;
         int n2 = r - mid;
@@ -346,9 +346,9 @@ public class BruteForce{
   
         // copy data to temp arrays
         for (int i = 0; i < n1; ++i)
-            L[i] = arr[l + i];
+            L[i] = array[l + i];
         for (int j = 0; j < n2; ++j)
-            R[j] = arr[mid + 1 + j];
+            R[j] = array[mid + 1 + j];
   
         /* Merge the temp arrays */
   
@@ -359,10 +359,10 @@ public class BruteForce{
         int k = l;
         while (i < n1 && j < n2) {
             if (L[i] <= R[j]) {
-                arr[k] = L[i];
+                array[k] = L[i];
                 i++;
             } else {
-                arr[k] = R[j];
+                array[k] = R[j];
                 j++;
             }
             k++;
@@ -370,21 +370,21 @@ public class BruteForce{
   
         // copy remaining elements of L[] if any
         while (i < n1) {
-            arr[k] = L[i];
+            array[k] = L[i];
             i++;
             k++;
         }
   
         // copy remaining elements of R[] if any
         while (j < n2) {
-            arr[k] = R[j];
+            array[k] = R[j];
             j++;
             k++;
         }
     }
 
     // Counting Sort, Reference: https://www.programiz.com/dsa/counting-sort
-    public static void countingSort(int array[], int size) {
+    public static void countingSort(int[] array, int size) {
         int[] output = new int[size + 1];
     
         // find the largest element of the array
@@ -424,7 +424,7 @@ public class BruteForce{
     }
 
     // Selection Sort, Reference: https://www.programiz.com/dsa/selection-sort
-    public static void selectionSort(int array[]) {
+    public static void selectionSort(int[] array) {
 
         for (int step = 0; step < arraySize - 1; step++) {
           int min_idx = step;
@@ -438,7 +438,9 @@ public class BruteForce{
             }
           }
     
-        // put min at the correct position
+        // put min at the correct position, 
+        // swap function is not working here
+        // swap(array, array[step], array[min_idx]);
         int temp = array[step];
         array[step] = array[min_idx];
         array[min_idx] = temp;
@@ -464,7 +466,7 @@ public class BruteForce{
         array[to] = temp;
     }
 
-    public static void shuffle(int [] array) {
+    public static void shuffle(int[] array) {
         int n = array.length;
 
         for (int i = 0; i < n; i++) {
