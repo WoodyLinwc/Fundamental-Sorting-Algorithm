@@ -14,7 +14,7 @@ import java.util.TreeMap;
 
 public class BruteForce{
 
-    public static int arraySize; // the size of the array
+    static int arraySize; // the size of the array
 
     public static void main(String[] args) {
         boolean runTime = true;
