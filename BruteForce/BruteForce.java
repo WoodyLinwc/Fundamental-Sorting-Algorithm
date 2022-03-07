@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.Random;
 
 public class BruteForce{
 
@@ -20,6 +21,7 @@ public class BruteForce{
         boolean runTime = true;
         boolean validInput = false;
         TreeMap<Integer, String> tm = new TreeMap<Integer, String>();
+        TreeMap<Integer, String> tm2 = new TreeMap<Integer, String>();
 
         // check if user has entered a valid input
         Scanner scan = new Scanner(System.in);
@@ -44,12 +46,23 @@ public class BruteForce{
         for (int i = 0; i < arraySize; i++) {
             exampleArray[i] = i;
         }
+
+        // generate random integer between 0 to 20
+        int[] randomArray = new int[arraySize];
+        Random randomInt = new Random(); 
+        for (int i = 0; i < arraySize; i++) {
+            randomArray[i] = randomInt.nextInt(20);
+        }
+
         // shuffle the example array
         BruteForce.shuffle(exampleArray);
 
         printDashLine();
-        System.out.printf("the randomized array = %s\n", Arrays.toString(exampleArray));
-        // calculate the runtime of algorithms
+        System.out.printf("the randomized array (distinct integer)= %s\n", Arrays.toString(exampleArray));
+        printOutBlank();
+        System.out.printf("the randomized array (duplicate integers)= %s\n", Arrays.toString(randomArray));
+
+        // calculate the runtime of algorithms with distinct integers
         if(runTime){
             printOutBlank();
             long startTime = System.nanoTime();
@@ -157,7 +170,88 @@ public class BruteForce{
             System.out.println("the algorithm runtime is "+ (elapsedTime) + "ns");
         }
 
+        // calculate the runtime of algorithms with duplicate integers
+        if(runTime){
+            BruteForce.shuffle(randomArray);
+            long startTime = System.nanoTime();
+            BruteForce.bubbleSort(randomArray);
+            long endTime = System.nanoTime();
+            int elapsedTime = (int)(endTime - startTime);
+            tm2.put(elapsedTime, "Bubble Sort");
+        }
         
+        if(runTime){
+            BruteForce.shuffle(randomArray);
+            long startTime = System.nanoTime();
+            BruteForce.optimizedBubbleSort(randomArray);
+            long endTime = System.nanoTime();
+            int elapsedTime = (int)(endTime - startTime);
+            tm2.put(elapsedTime, "Optimized Bubble Sort");
+        }
+
+        if(runTime){
+            BruteForce.shuffle(randomArray);
+            long startTime = System.nanoTime();
+            BruteForce.insertionSort(randomArray);
+            long endTime = System.nanoTime();
+            int elapsedTime = (int)(endTime - startTime);
+            tm2.put(elapsedTime, "Insertion Sort");
+        }
+
+        if(runTime){
+            BruteForce.shuffle(randomArray);
+            long startTime = System.nanoTime();
+            BruteForce.heapSort(randomArray);
+            long endTime = System.nanoTime();
+            int elapsedTime = (int)(endTime - startTime);
+            tm2.put(elapsedTime, "Heap Sort");
+        }
+
+        if(runTime){
+            BruteForce.shuffle(randomArray);
+            long startTime = System.nanoTime();
+            BruteForce.selectionSort(randomArray);
+            long endTime = System.nanoTime();
+            int elapsedTime = (int)(endTime - startTime);
+            tm2.put(elapsedTime, "Selection Sort");
+        }
+        
+        if(runTime){
+            BruteForce.shuffle(randomArray);
+            long startTime = System.nanoTime();
+            BruteForce.shellSort(randomArray, arraySize);
+            long endTime = System.nanoTime();
+            int elapsedTime = (int)(endTime - startTime);
+            tm2.put(elapsedTime, "Shell Sort");
+        }
+        
+        if(runTime){
+            BruteForce.shuffle(randomArray);
+            long startTime = System.nanoTime();
+            BruteForce.mergeSort(randomArray, 0, arraySize - 1);
+            long endTime = System.nanoTime();
+            int elapsedTime = (int)(endTime - startTime);
+            tm2.put(elapsedTime, "Merge Sort");
+        }
+        
+        if(runTime){
+            BruteForce.shuffle(randomArray);
+            long startTime = System.nanoTime();
+            BruteForce.quickSort(randomArray, 0, arraySize - 1);
+            long endTime = System.nanoTime();
+            int elapsedTime = (int)(endTime - startTime);
+            tm2.put(elapsedTime, "Quick Sort");
+        }
+
+        if(runTime){
+            BruteForce.shuffle(randomArray);
+            long startTime = System.nanoTime();
+            BruteForce.countingSort(randomArray, arraySize);
+            long endTime = System.nanoTime();
+            int elapsedTime = (int)(endTime - startTime);
+            tm2.put(elapsedTime, "Counting Sort");
+        }
+
         printOutBlank();
         // arrange the algorithm runtime from most efficient to least efficient
         @SuppressWarnings("rawtypes")
@@ -165,12 +259,27 @@ public class BruteForce{
         @SuppressWarnings("rawtypes")
         Iterator i = set.iterator();
 
-        System.out.println("the algorithm runtime in ascending order:");
+        System.out.println("the algorithm runtime in ascending order (distinct integers):");
         while(i.hasNext()) {
             @SuppressWarnings("rawtypes")
             Map.Entry me = (Map.Entry)i.next();
             System.out.print(me.getValue() + " < ");
-          }        
+        }
+
+        printOutBlank();
+        printOutBlank();
+        // arrange the algorithm runtime from most efficient to least efficient (duplicate integers)
+        @SuppressWarnings("rawtypes")
+        Set set2 = tm2.entrySet();
+        @SuppressWarnings("rawtypes")
+        Iterator i2 = set2.iterator();
+
+        System.out.println("the algorithm runtime in ascending order (duplicate integers):");
+        while(i2.hasNext()) {
+            @SuppressWarnings("rawtypes")
+            Map.Entry me2 = (Map.Entry)i2.next();
+            System.out.print(me2.getValue() + " < ");
+        } 
         printOutBlank();
         printDashLine();
     }
