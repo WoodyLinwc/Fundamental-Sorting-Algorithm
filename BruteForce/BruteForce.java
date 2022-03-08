@@ -60,9 +60,9 @@ public class BruteForce{
         BruteForce.shuffle(exampleArray);
 
         printDashLine();
-        System.out.printf("the randomized array (distinct integer)= %s\n", Arrays.toString(exampleArray));
+        System.out.printf("the randomized array with distinct integer = %s\n", Arrays.toString(exampleArray));
         printOutBlank();
-        System.out.printf("the randomized array (duplicate integers)= %s\n", Arrays.toString(randomArray));
+        System.out.printf("the randomized array with duplicate integers = %s\n", Arrays.toString(randomArray));
 
         // calculate the runtime of algorithms with distinct integers
         if(runTime){
