@@ -259,7 +259,7 @@ public class BruteForce{
         @SuppressWarnings("rawtypes")
         Iterator i = set.iterator();
 
-        System.out.println("the algorithm runtime in ascending order (distinct integers):");
+        System.out.println("the algorithm runtime in ascending order with " + arraySize + " distinct integers:");
         while(i.hasNext()) {
             @SuppressWarnings("rawtypes")
             Map.Entry me = (Map.Entry)i.next();
@@ -274,7 +274,7 @@ public class BruteForce{
         @SuppressWarnings("rawtypes")
         Iterator i2 = set2.iterator();
 
-        System.out.println("the algorithm runtime in ascending order (duplicate integers):");
+        System.out.println("the algorithm runtime in ascending order with " + arraySize + " duplicate integers:");
         while(i2.hasNext()) {
             @SuppressWarnings("rawtypes")
             Map.Entry me2 = (Map.Entry)i2.next();

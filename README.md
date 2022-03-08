@@ -7,7 +7,7 @@ So far, I have the following sorting algorithms in the file
 2. optimized bubble sort
 3. insertion sort 
 4. selection sort
-5. shell sort 
+5. shell sort
 6. heap sort 
 7. merge sort
 8. quick sort
@@ -19,7 +19,7 @@ So far, I have the following sorting algorithms in the file
 
 - The program arranges the algorithm runtime from most efficient to least efficient in the command line output.
 
-![runtime](/images/runtime.png)
+![runtime](/images/runtimes.png)
 
 ---
 
