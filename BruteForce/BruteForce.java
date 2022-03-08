@@ -20,7 +20,9 @@ public class BruteForce{
     public static void main(String[] args) {
         boolean runTime = true;
         boolean validInput = false;
+        // create a TreeMap object to store the runtimes with distinct integers
         TreeMap<Integer, String> tm = new TreeMap<Integer, String>();
+        // create a TreeMap object to store the runtimes with duplicate integers
         TreeMap<Integer, String> tm2 = new TreeMap<Integer, String>();
 
         // check if user has entered a valid input
